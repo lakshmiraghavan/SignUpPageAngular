@@ -1,0 +1,7 @@
+<div class="container">
+<div ng-repeat="contact in contactlist track by $index">
+    <p><span ng-show="$last"> Welcome {{contact.firstName}}</span></p>
+    <p>You have successfully singed up.</p>
+    <p>Your user name is <span ng-show="$last">{{contact.lastName}}></span></p>
+</div>
+</div>

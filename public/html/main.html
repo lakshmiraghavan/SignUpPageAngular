@@ -1,0 +1,84 @@
+<h1>Sign up Page</h1>
+<div class="new-container">
+    <div class="container">
+<div class="container" ng-controller="AppCtrl">
+
+    <form class="form-horizontal" name="signup" novalidate >
+
+
+        <div class="form-group">
+            <h4>Name</h4>
+            <label  class="col-sm-2 label-control align-text" >First Name</label>
+            <div class="col-sm-4 text-margin" >
+                <span><input name="firstName"  ng-maxlength=50 ng-model="contact.firstName" type="text" ng-keyup="$event.keyCode == 13 && addPerson()" ng-pattern="/^[a-zA-Z]*$/" required></span>
+                <small  ng-show="signup.firstName.$error.required"> * Required</small>
+                <div><small class="red" ng-show="signup.firstName.$error.maxlength">First name is too long.</small>
+                    <small class="red" ng-show="signup.firstName.$error.pattern">Name may contain letters only.</small></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 label-control align-text" >Last Name</label>
+            <div class="col-sm-4 text-margin">
+                <span><input name="lastName"  ng-maxlength=50 ng-model="contact.lastName" type="text" ng-keyup="$event.keyCode == 13 && addPerson()" ng-pattern="/^[a-zA-Z]*$/" placeholder="Optional"/></span>
+               <div><small class="red" ng-show="signup.last.$error.maxlength">Last name is too long.</small>
+                   <small class="red" ng-show="signup.last.$error.pattern">Name can only have letters.</small></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>ID and Password</h4>
+            <label class="col-sm-2 align-text label-control">Username</label>
+            <div class="col-sm-4 text-margin">
+                <input name="email" ng-maxlength=56 ng-model="contact.email" type="email" placeholder="email" required>
+                <small  ng-show="signup.email.$error.required"> * Required</small>
+                <div><small class="red" ng-show="signup.email.$touched && signup.email.$invalid">Please enter a valid email address.</small>
+                <small class="red" ng-show="signup.email.$error.maxlength">Username is too long.</small></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 label-control align-text">Password</label>
+            <div class="col-sm-4 text-margin">
+                <input ng-model="contact.password" ng-keyup="$event.keyCode == 13 && addPerson()" ng-minlength="6" type="password" ng-blur="matchPassword()"  name="password" placeholder="Password" required/>
+                <small  ng-show="signup.password.$error.required"> * Required</small>
+                <div>
+                    <small class="red" ng-show="signup.password.$touched && signup.password.$error.minlength">Password must be at least 6 characters long.</small>
+            </div>
+        </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 label-control align-text">Confirm Password</label>
+            <div class="col-sm-2 text-margin">
+
+                <input type="password" ng-model="passwordConfirm" ng-blur="matchPassword()"  name="passwordConfirm" placeholder="Confirm password" required />
+            <div><small class="red" ng-show="signup.password.$touched && signup.password.$error.minlength">Password must be at least 6 characters long.</small>
+                <small class="red" ng-show="signup.passwordConfirm.$dirty && nomatch">Passwords do not match.</small></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>Date of Birth</h4>
+            <label  class="col-sm-2 label-control align-text">Birthday</label>
+            <div class="col-sm-2 text-margin">
+                <input ng-model="contact.dob" ng-keyup="$event.keyCode == 13 && addUser()" type="date" name="dob" placeholder="MM/DD/YYYY" ng-min="minAge()"required/>
+             <div>
+                 <small class="red" ng-show="signup.dob.$error.min">You should be atleast 14 years old.</small>
+             </div>
+        </div>
+    </div>
+        <div>
+            <div class="input-group">
+            </div>
+        </div>
+        <div class="form-group" >
+            <div class="col-sm-offset-2 col-sm-10 float-right" >
+
+                <button type="button" class="btn btn-primary" ng-click="addContact()" >Sign Up</button>
+                <button type="button" class="btn btn-default" ng-click="Clear($event)">Clear</button>
+            </div>
+
+        </div>
+
+    </form>
+    </div>
+</div>
+</div>
